@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Tools Budget Proposal — Visit Loudoun</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ---- RESET & BASE ---- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --merlot:       #77092E;
+      --noir:         #3E495B;
+      --sage:         #7B8F86;
+      --blonde:       #D5BC5F;
+      --morningsun:   #F0E9CC;
+      --saddle:       #1E2322;
+      --stone:        #AEA89C;
+      --cloud:        #C9C9C1;
+      --dogwood:      #EEE4DA;
+      --white:        #FFFFFF;
+      --body-font:    Arial, 'Helvetica Neue', sans-serif;
+      --serif-font:   'Lora', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--body-font);
+      color: var(--saddle);
+      background: var(--white);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ---- LAYOUT ---- */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    section { padding: 72px 0; }
+    section:nth-child(even):not(.ask-section) { background: var(--dogwood); }
+
+    h1, h2, h3 { font-family: var(--serif-font); line-height: 1.25; }
+    h2 { font-size: 1.75rem; color: var(--noir); margin-bottom: 12px; }
+    h3 { font-size: 1.15rem; color: var(--merlot); margin-bottom: 6px; }
+    p { margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+
+    .label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 8px;
+    }
+
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--blonde);
+      margin: 16px 0 32px;
+    }
+
+    /* ---- HERO ---- */
+    .hero {
+      background: var(--merlot);
+      color: var(--white);
+      padding: 88px 0 80px;
+    }
+
+    .hero .label { color: var(--blonde); opacity: 0.85; }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--white);
+      max-width: 620px;
+      margin-bottom: 20px;
+    }
+
+    .hero .subhead {
+      font-family: var(--serif-font);
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--morningsun);
+      max-width: 540px;
+      margin-bottom: 32px;
+    }
+
+    .hero .meta {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.04em;
+    }
+
+    /* ---- STAT BAR ---- */
+    .stat-bar {
+      background: var(--noir);
+      padding: 0;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .stat-item {
+      padding: 40px 32px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat-item:last-child { border-right: none; }
+
+    .stat-number {
+      font-family: var(--serif-font);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--blonde);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-desc {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.4;
+    }
+
+    .stat-source {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.35);
+      margin-top: 6px;
+    }
+
+    /* ---- BENCHMARK CARDS ---- */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--cloud);
+      border-top: 3px solid var(--merlot);
+      padding: 28px;
+      border-radius: 2px;
+    }
+
+    .card .num {
+      font-family: var(--serif-font);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--merlot);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .card p { font-size: 0.9rem; color: var(--noir); margin-bottom: 8px; }
+    .card .source { font-size: 0.7rem; color: var(--stone); }
+
+    /* ---- ROI BLOCK ---- */
+    .roi-highlight {
+      background: var(--merlot);
+      color: var(--white);
+      padding: 40px 40px;
+      margin: 32px 0;
+      border-radius: 2px;
+    }
+
+    .roi-highlight .roi-math {
+      font-family: var(--serif-font);
+      font-size: 1.5rem;
+      color: var(--blonde);
+      margin-bottom: 12px;
+    }
+
+    .roi-highlight p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 580px;
+    }
+
+    /* ---- DMO QUOTE ---- */
+    .dmo-quote {
+      border-left: 4px solid var(--blonde);
+      padding: 20px 28px;
+      background: var(--white);
+      margin: 32px 0;
+    }
+
+    .dmo-quote p {
+      font-family: var(--serif-font);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--noir);
+      margin-bottom: 8px;
+    }
+
+    .dmo-quote cite {
+      font-size: 0.75rem;
+      color: var(--stone);
+      font-style: normal;
+    }
+
+    /* ---- DMO STAT GRID ---- */
+    .dmo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .dmo-stat {
+      background: var(--morningsun);
+      border: 1px solid var(--stone);
+      padding: 24px;
+      border-radius: 2px;
+    }
+
+    .dmo-stat .pct {
+      font-family: var(--serif-font);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--merlot);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .dmo-stat p { font-size: 0.85rem; margin: 0; }
+
+    /* ---- TOOL TABLE ---- */
+    .tool-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 28px;
+      font-size: 0.9rem;
+    }
+
+    .tool-table thead tr {
+      background: var(--noir);
+      color: var(--white);
+    }
+
+    .tool-table th {
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .tool-table tbody tr { border-bottom: 1px solid var(--cloud); }
+    .tool-table tbody tr:last-child { border-bottom: none; }
+
+    .tool-table td {
+      padding: 14px 16px;
+      vertical-align: top;
+    }
+
+    .tool-table tbody tr:nth-child(odd) { background: var(--dogwood); }
+    .tool-table tbody tr:nth-child(even) { background: var(--white); }
+
+    .tool-name { font-weight: 700; color: var(--noir); }
+    .tool-price { font-family: var(--serif-font); font-weight: 600; color: var(--merlot); white-space: nowrap; }
+
+    .tool-table tfoot tr { background: var(--merlot); }
+    .tool-table tfoot td {
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 14px 16px;
+    }
+    .tool-table tfoot .total-num {
+      font-family: var(--serif-font);
+      font-size: 1.2rem;
+      color: var(--blonde);
+    }
+
+    .budget-note {
+      background: var(--morningsun);
+      border: 1px solid var(--blonde);
+      padding: 18px 22px;
+      font-size: 0.85rem;
+      margin-top: 20px;
+      border-radius: 2px;
+    }
+
+    /* ---- USE CASES ---- */
+    .use-list {
+      list-style: none;
+      margin-top: 28px;
+    }
+
+    .use-list li {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--cloud);
+    }
+
+    .use-list li:last-child { border-bottom: none; }
+
+    .use-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--merlot);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .use-list h3 { font-size: 0.95rem; margin-bottom: 2px; color: var(--noir); }
+    .use-list p { font-size: 0.85rem; color: #555; margin: 0; }
+
+    /* ---- THE ASK ---- */
+    .ask-section {
+      background: var(--noir);
+      color: var(--white);
+    }
+
+    .ask-section .label { color: var(--blonde); }
+    .ask-section h2 { color: var(--white); }
+
+    .ask-box {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-left: 4px solid var(--blonde);
+      padding: 32px 36px;
+      margin-top: 32px;
+      border-radius: 2px;
+    }
+
+    .ask-amount {
+      font-family: var(--serif-font);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--blonde);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .ask-label {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+    }
+
+    .ask-list {
+      list-style: none;
+      margin-top: 0;
+    }
+
+    .ask-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+    }
+
+    .ask-list li:last-child { border-bottom: none; }
+
+    .ask-list li::before {
+      content: "→";
+      color: var(--blonde);
+      flex-shrink: 0;
+    }
+
+    .closing-note {
+      margin-top: 32px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      font-style: italic;
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: var(--saddle);
+      padding: 28px 0;
+      text-align: center;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 640px) {
+      .stat-row { grid-template-columns: 1fr; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .card-grid { grid-template-columns: 1fr; }
+      .dmo-grid { grid-template-columns: 1fr; }
+      .container { padding: 0 20px; }
+      section { padding: 52px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== HERO ==================== -->
+  <div class="hero">
+    <div class="container">
+      <p class="label">Visit Loudoun — FY2026 Budget Proposal</p>
+      <h1>The Case for AI Tools at Visit Loudoun</h1>
+      <p class="subhead">A $1,000 annual investment that pays back in weeks — and keeps the organization ahead.</p>
+      <p class="meta">Prepared by AJ Mirabal, Marketing Coordinator &nbsp;·&nbsp; May 2026</p>
+    </div>
+  </div>
+
+  <!-- ==================== STAT BAR ==================== -->
+  <div class="stat-bar">
+    <div class="container">
+      <div class="stat-row">
+        <div class="stat-item">
+          <div class="stat-number">$6,000</div>
+          <div class="stat-desc">Average company's annual AI tool spend — across all business sizes</div>
+          <div class="stat-source">Ramp Q1 2024 Business Spending Benchmarks</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">6.1 hrs</div>
+          <div class="stat-desc">Per week recovered by marketers using AI tools</div>
+          <div class="stat-source">HubSpot AI Trends for Marketers Report</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">49%</div>
+          <div class="stat-desc">Of DMOs say content creation is where AI delivers the most value</div>
+          <div class="stat-source">Sojern State of Destination Marketing 2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 1: BENCHMARKS ==================== -->
+  <section>
+    <div class="container">
+      <p class="label">Industry Benchmarks</p>
+      <h2>What Other Organizations Are Spending</h2>
+      <div class="divider"></div>
+      <p>AI tool investment has gone from optional to expected across marketing functions. Visit Loudoun's $1,000 ask is not a big bet — it is well below what comparable organizations spend, and targeted rather than exploratory.</p>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="num">$6,000/yr</div>
+          <p>The average U.S. company now spends approximately $1,500 <em>per quarter</em> on AI tools — a 138 percent year-over-year increase. AI spending grew 293 percent year-over-year vs. just six percent for software overall.</p>
+          <p class="source">Ramp Q1 2024 Business Spending Benchmarks (real corporate transaction data)</p>
+        </div>
+        <div class="card">
+          <div class="num">$116/mo</div>
+          <p>The average AI "power user" — a marketing professional using multiple tools — spends approximately $116 per month on subscriptions. At $1,000 per year, Visit Loudoun's request is 28 percent below that benchmark.</p>
+          <p class="source">Ordoh AI Subscription Cost Analysis 2025</p>
+        </div>
+        <div class="card">
+          <div class="num">9%</div>
+          <p>Nine percent of total marketing budgets now go to AI tools — the fastest-growing spend category in marketing. More than half of B2B organizations have a dedicated AI tools budget line.</p>
+          <p class="source">Cubeo AI — 25 AI Marketing Statistics, 2025</p>
+        </div>
+        <div class="card">
+          <div class="num">99%</div>
+          <p>Only one percent of CMOs say generative AI is not a priority — effectively unanimous. With flat marketing budgets, AI is how organizations maintain or grow output with the same headcount.</p>
+          <p class="source">Gartner 2025 CMO Spend Survey</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 2: ROI ==================== -->
+  <section>
+    <div class="container">
+      <p class="label">Return on Investment</p>
+      <h2>The Productivity Math Is Clear</h2>
+      <div class="divider"></div>
+      <p>The strongest argument for AI tools is not the features — it is the time. Every major marketing industry study from the last 18 months arrives at the same finding: marketers using AI recover five to six hours per week. That translates directly into capacity.</p>
+
+      <div class="roi-highlight">
+        <div class="roi-math">6 hours/week &nbsp;×&nbsp; 50 weeks &nbsp;=&nbsp; 300 hours/year recovered</div>
+        <p>At a conservative internal labor rate, 300 hours represents more than seven full work weeks of capacity returned annually — against a $1,000 tool investment. That is a roughly 6–8x return on the dollar before any content or traffic gains are counted.</p>
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="num">74%</div>
+          <p>Of marketing and business leaders say AI is critical for success in the next year. This is the fifth consecutive year of gains in that figure.</p>
+          <p class="source">Marketing AI Institute 2025 State of Marketing AI Report (1,900 respondents)</p>
+        </div>
+        <div class="card">
+          <div class="num">3.7x</div>
+          <p>Average return on every $1 invested in generative AI tools — with a median payback period of 4.2 months, down from 7.8 months the prior year.</p>
+          <p class="source">Menlo Ventures 2025 State of Generative AI in the Enterprise</p>
+        </div>
+        <div class="card">
+          <div class="num">10–15×</div>
+          <p>Organizations using AI in their marketing workflows can execute campaigns 10 to 15 times faster. Marketing and sales are the most common functions for AI adoption.</p>
+          <p class="source">McKinsey State of AI 2025</p>
+        </div>
+        <div class="card">
+          <div class="num">49%</div>
+          <p>Of CMOs who have invested in generative AI report time efficiency gains. Forty percent report cost efficiency gains. Twenty-seven percent report increased capacity to produce more content.</p>
+          <p class="source">Gartner 2025 CMO Spend Survey</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 3: DMO DATA ==================== -->
+  <section>
+    <div class="container">
+      <p class="label">DMO-Specific Data</p>
+      <h2>The Tourism Sector Is Already Moving</h2>
+      <div class="divider"></div>
+      <p>This is not a trend arriving from outside the industry. DMOs specifically have been surveyed on AI adoption — and content creation is where they say it delivers the most value. That is exactly the work this budget would support.</p>
+
+      <div class="dmo-quote">
+        <p>"With AI, DMOs are empowered to automate repetitive work, identify patterns from huge swathes of data, and create a more seamless digital experience in a way that was previously reserved for big-budget organizations."</p>
+        <cite>— Solimar International DMO Technology Report, 2025</cite>
+      </div>
+
+      <div class="dmo-grid">
+        <div class="dmo-stat">
+          <div class="pct">49%</div>
+          <p>of DMOs say content creation is where AI will have the most significant impact</p>
+        </div>
+        <div class="dmo-stat">
+          <div class="pct">40%</div>
+          <p>of DMOs see major AI potential in predictive analysis and forecasting</p>
+        </div>
+        <div class="dmo-stat">
+          <div class="pct">38%</div>
+          <p>see it in data analysis and interpretation</p>
+        </div>
+        <div class="dmo-stat">
+          <div class="pct">37%</div>
+          <p>see it in marketing content personalization</p>
+        </div>
+      </div>
+
+      <p style="margin-top:24px; font-size:0.82rem; color: var(--stone);">Source: Sojern State of Destination Marketing 2024, surveying nearly 300 DMOs and government tourism departments worldwide in partnership with Digital Tourism Think Tank, Brand USA, Destination Canada and the European Travel Commission.</p>
+
+      <p style="margin-top: 16px; font-size: 0.9rem;">Notably, <strong>Simpleview</strong> — the CMS platform powering VisitLoudoun.org — has published its own AI guide specifically for DMOs, signaling that AI is already expected as part of the standard DMO workflow, not a future consideration.</p>
+
+      <p style="font-size: 0.9rem;">The AI in tourism market was valued at <strong>$2.95 billion in 2024</strong> and is projected to reach <strong>$13.38 billion by 2030</strong> — a 28.7 percent compound annual growth rate. The organizations that build fluency now will have a real advantage over those that wait.</p>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 3B: THE EVALUATOR ARGUMENT ==================== -->
+  <section>
+    <div class="container">
+      <p class="label">Addressing the Real Question</p>
+      <h2>Why the Org Needs Someone Who Has Actually Used These Tools</h2>
+      <div class="divider"></div>
+      <p>If Visit Loudoun eventually standardizes on one AI platform — which is a reasonable direction — the person who recommends that platform, trains others on it, and knows where it falls short needs to have genuinely tested the alternatives first. That evaluation has to happen somewhere. This budget is where it happens. It also funds two things a single-tool approach cannot provide: staying current on a rapidly moving industry, and getting genuinely different perspectives when doing research — not just the same answer from the same source every time.</p>
+
+      <div class="roi-highlight">
+        <div class="roi-math">The $1,000 question isn't "should AJ use multiple tools?" — it's "who should make the org's AI decision?"</div>
+        <p>An untested recommendation is a guess. A tested one is defensible intelligence. This budget funds the difference — and it is far less expensive than committing the organization to the wrong enterprise tool based on a vendor pitch alone.</p>
+      </div>
+
+      <div class="card-grid" style="margin-top: 32px;">
+        <div class="card">
+          <h3>Tools Have Genuinely Different Strengths</h3>
+          <p style="font-size:0.9rem;">AI tools are not interchangeable. Each platform in this proposal covers a distinct capability that the others do not — and that Visit Loudoun's content workflow genuinely needs:</p>
+          <ul style="list-style:none; margin-top:12px;">
+            <li style="padding: 10px 0; border-bottom: 1px solid var(--cloud); font-size:0.88rem;"><strong style="color:var(--merlot);">Perplexity Pro</strong> — the only major AI tool that returns real-time, sourced results from the live web. Essential for competitive research, tourism trend monitoring, and verifying statistics and facts before they appear on VisitLoudoun.org. No other tool in the stack does this.</li>
+            <li style="padding: 10px 0; border-bottom: 1px solid var(--cloud); font-size:0.88rem;"><strong style="color:var(--merlot);">Gemini Pro</strong> — native Google Workspace integration that Claude cannot replicate. Drafts and summarizes directly inside Gmail, Docs, and Sheets — the tools Visit Loudoun's team already uses every day. Reduces friction for operational tasks without switching platforms.</li>
+            <li style="padding: 10px 0; border-bottom: 1px solid var(--cloud); font-size:0.88rem;"><strong style="color:var(--merlot);">Picryl Premium</strong> — 35 million public domain images from the Library of Congress, Smithsonian, and National Archives at full resolution, zero licensing cost. Historical maps of Loudoun, archival Virginia photography, Civil War-era records — differentiated heritage imagery that no stock library carries and that supports the history and culture content strategy on VisitLoudoun.org.</li>
+            <li style="padding: 10px 0; font-size:0.88rem;"><strong style="color:var(--merlot);">Emerging tools testing budget</strong> — the portion of this budget reserved for evaluating new AI tools with tourism-specific applications: AI itinerary builders, destination chatbots, travel content platforms. When Simpleview or our agency pitches a new AI feature, this budget funds the ability to test it independently before committing.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Using Multiple Tools Is a Quality Control Practice</h3>
+          <p style="font-size:0.9rem;">AI tools make confident mistakes. A single-tool workflow has no check on those errors. A two-tool workflow catches them before they reach the website.</p>
+          <p style="font-size:0.9rem; margin-top:12px;"><strong>Real example:</strong> A town page draft produced in Claude gets its historical facts cross-checked in Perplexity before publishing. If Perplexity's sourced results conflict with what Claude wrote, that's the catch — not a correction from a visitor or a partner calling out an error after the page is live.</p>
+          <p style="font-size:0.9rem; margin-top:12px;">For a destination that positions itself as an authoritative source for Loudoun County, accuracy isn't optional. Multi-tool verification is the process that protects it.</p>
+        </div>
+        <div class="card">
+          <h3>Staying Current Is Part of the Job — Not a Bonus</h3>
+          <p style="font-size:0.9rem;">The destination marketing landscape is in active disruption: AI Overviews are reshaping organic search, new travel platforms launch regularly, and competitor DMOs are shifting their content strategies in real time. The only way to track this meaningfully is to be actively working inside the tools — not reading second-hand reviews written by people reading second-hand reviews.</p>
+          <p style="font-size:0.9rem; margin-top:12px;">Different tools also surface different perspectives on the same topic. Perplexity returns live, sourced web results. Gemini draws from Google's knowledge graph. Running competitive research, keyword analysis, or trend monitoring through both consistently produces a fuller picture than either tool delivers alone — and the gaps between what they return are often the most valuable signal.</p>
+          <p style="font-size:0.9rem; margin-top:12px;">When the agency, Simpleview, or a vendor pitches a new AI feature, someone in this organization needs to evaluate that pitch from a position of informed experience. That's a concrete organizational asset — and it only exists if the tools are being actively used.</p>
+        </div>
+        <div class="card">
+          <h3>This Is Temporary Evaluation Spend, Not Permanent Overhead</h3>
+          <p style="font-size:0.9rem;">The multi-tool budget is specifically structured for the evaluation period — while the AI landscape is still actively differentiating and before Visit Loudoun has made a formal platform decision.</p>
+          <p style="font-size:0.9rem; margin-top:12px;">Once the org commits to a primary platform, the stack consolidates. The goal of this budget is to arrive at that decision with evidence rather than assumptions. The ~$116 buffer line exists precisely to test emerging tools that weren't on the radar when this proposal was written.</p>
+          <p style="font-size:0.9rem; margin-top:12px;"><strong>At $1,000 total for the year, this is the lowest-cost way to build genuine organizational AI fluency before committing to anything larger.</strong></p>
+        </div>
+      </div>
+
+      <div class="dmo-quote" style="margin-top: 36px;">
+        <p>"The organizations that do best with AI aren't the ones that move fastest — they're the ones that have someone who actually understands the tools making the decisions."</p>
+        <cite>— Marketing AI Institute, 2025 State of Marketing AI Report</cite>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 4: TOOL STACK ==================== -->
+  <section>
+    <div class="container">
+      <p class="label">Proposed Budget Allocation</p>
+      <h2>What $1,000 Buys</h2>
+      <div class="divider"></div>
+      <p>The tools below represent a lean evaluation stack — each selected because it covers a distinct capability gap that a single tool cannot fill today. As the AI landscape matures and Visit Loudoun moves toward a formal platform decision, this stack informs that choice with real usage data rather than speculation.</p>
+
+      <table class="tool-table">
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>Primary Purpose</th>
+            <th>Annual Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tool-name">Perplexity Pro</span><br><span style="font-size:0.75rem;color:var(--stone)">Perplexity AI</span></td>
+            <td>Real-time research with cited, sourced results — competitor intelligence, tourism trend monitoring, industry benchmarks, keyword context and fact-checking before content goes live on VisitLoudoun.org</td>
+            <td><span class="tool-price">$200/yr</span></td>
+          </tr>
+          <tr>
+            <td><span class="tool-name">Gemini Pro</span><br><span style="font-size:0.75rem;color:var(--stone)">Google</span></td>
+            <td>Native Google Workspace integration — works directly inside Gmail, Docs and Sheets. Drafting, summarizing, and research tasks tied to the Google ecosystem Visit Loudoun already operates in day-to-day</td>
+            <td><span class="tool-price">$240/yr</span></td>
+          </tr>
+          <tr>
+            <td><span class="tool-name">Picryl Premium</span><br><span style="font-size:0.75rem;color:var(--stone)">GetArchive</span></td>
+            <td>Full-resolution downloads from 35M+ public domain images — Library of Congress, Smithsonian, National Archives. Zero licensing cost. Historical maps, archival photography and heritage imagery for Loudoun history content, blog posts and campaign assets</td>
+            <td><span class="tool-price">$120/yr</span></td>
+          </tr>
+          <tr>
+            <td><span class="tool-name">Emerging Tools Testing Budget</span><br><span style="font-size:0.75rem;color:var(--stone)">Reserved — travel &amp; tourism AI</span></td>
+            <td>Dedicated budget for evaluating new and emerging AI tools with direct tourism/DMO applications — AI itinerary builders, destination chatbots, travel content platforms, and tools flagged by Simpleview, our agency, or peer DMOs at industry conferences</td>
+            <td><span class="tool-price">~$440</span></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2"><strong>Total Annual Investment</strong></td>
+            <td class="total-num">$1,000</td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <div class="budget-note">
+        <strong>Note on Claude:</strong> Claude is not included here because Visit Loudoun already has access through our current AI coursework and will likely move to a Claude Enterprise subscription organizationally. This budget covers the complementary tools and the evaluation capacity that a single enterprise platform cannot replace — specifically real-time sourced research (Perplexity), Google Workspace integration (Gemini), public domain image access (Picryl), and the flexibility to test emerging travel and tourism AI tools as they arrive.
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 5: USE CASES ==================== -->
+  <section>
+    <div class="container">
+      <p class="label">Practical Applications</p>
+      <h2>How These Tools Apply to Visit Loudoun's Work</h2>
+      <div class="divider"></div>
+      <p>These are not hypothetical use cases. Each maps directly to active responsibilities in the Marketing Coordinator role and current Year 1 content priorities.</p>
+
+      <ul class="use-list">
+        <li>
+          <div class="use-icon">01</div>
+          <div>
+            <h3>Town & Destination Page Content</h3>
+            <p>Drafting and expanding 1,000-plus-word town pages for VisitLoudoun.org — Leesburg, Middleburg, Purcellville, Bluemont and more. AI handles research synthesis and first drafts; AJ edits for accuracy and brand voice. Time to first draft: reduced from a full day to under two hours per page.</p>
+          </div>
+        </li>
+        <li>
+          <div class="use-icon">02</div>
+          <div>
+            <h3>Blog SEO Metadata</h3>
+            <p>Generating title tags, meta descriptions, URL slugs and keyword targets for every new blog post. With an in-house author producing content weekly, consistent SEO metadata requires a tool that can turn it around in minutes — not hours.</p>
+          </div>
+        </li>
+        <li>
+          <div class="use-icon">03</div>
+          <div>
+            <h3>Get Out Loudoun Ad Copy</h3>
+            <p>Producing three copy-ready concepts (Headline / Body / CTA) for monthly print and digital ads. AI drafts concepts against brand voice and campaign brief; AJ selects, refines and approves. Eliminates the blank-page problem on a monthly deadline.</p>
+          </div>
+        </li>
+        <li>
+          <div class="use-icon">04</div>
+          <div>
+            <h3>Analytics Interpretation & Reporting</h3>
+            <p>Processing GA4 and Google Search Console data into plain-language recommendations. AI translates raw traffic and impression data into prioritized action lists — which pages to fix, which keywords to target, which posts to update. Turns a half-day data task into a 30-minute briefing.</p>
+          </div>
+        </li>
+        <li>
+          <div class="use-icon">05</div>
+          <div>
+            <h3>Landing Page & Campaign Content</h3>
+            <p>Building seasonal landing pages that align with Get Out Loudoun campaigns. AI maintains consistency between ad copy and page content, ensuring the message a visitor sees in print carries through to the web experience.</p>
+          </div>
+        </li>
+        <li>
+          <div class="use-icon">06</div>
+          <div>
+            <h3>Staying Current on Destination Marketing Trends</h3>
+            <p>The tourism marketing landscape is moving faster than any published playbook. Google AI Overviews are reshaping organic search. Platforms that didn't exist two years ago are now mainstream. Competitors are quietly updating their content strategies. AI-powered research tools make it possible to monitor all of this in real time — not by spending hours reading trade publications, but by querying what's changing across the industry in minutes and surfacing patterns before they become obvious.</p>
+            <p style="margin-top: 8px;">An AI-fluent marketing coordinator who surfaces trends proactively — and brings that intelligence into campaign planning, content prioritization, and agency conversations — is an entirely different organizational asset than one who encounters those trends at the next conference. This is the function that justifies staying subscribed to the tools, not just using them once for a deliverable.</p>
+          </div>
+        </li>
+        <li>
+          <div class="use-icon">07</div>
+          <div>
+            <h3>Getting Different Perspectives When Doing Research</h3>
+            <p>A single AI tool gives one perspective — shaped by that tool's training data, sourcing, and model design. Running the same research question through Perplexity (live web results with citations) and Gemini (Google's knowledge graph and connected Workspace data) surfaces different angles, different sources, and sometimes meaningfully different findings.</p>
+            <p style="margin-top: 8px;">Where both tools agree, confidence is higher. Where they diverge, that's the signal — a reason to look closer before a finding shapes a content decision, informs a campaign angle, or gets cited in a stakeholder report. For a small team without a dedicated research function, this kind of built-in cross-referencing is the closest thing to a second opinion on every significant research question. It catches blind spots before they become published mistakes on VisitLoudoun.org.</p>
+            <p style="margin-top: 8px;">This also applies to competitive intelligence. Researching what Charlottesville, Fauquier County, or the Shenandoah Valley is doing across two tools — with different sourcing — consistently surfaces more than either tool produces alone.</p>
+          </div>
+        </li>
+        <li>
+          <div class="use-icon">08</div>
+          <div>
+            <h3>Team Knowledge Sharing</h3>
+            <p>Synthesizing research, competitor data, trend findings and industry reports into digestible summaries for team meetings and agency reviews. AI makes it practical to share what's happening across channels — turning hours of reading into a five-minute briefing that the whole team can act on.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 6: THE ASK ==================== -->
+  <section class="ask-section">
+    <div class="container">
+      <p class="label">The Request</p>
+      <h2>The Ask</h2>
+      <div class="divider"></div>
+      <p style="color: rgba(255,255,255,0.75);">The budget is conservative relative to industry benchmarks, targeted to active job responsibilities and structured to deliver measurable output — more pages written, more metadata produced, more campaigns executed without adding headcount.</p>
+
+      <div class="ask-box">
+        <div class="ask-amount">$1,000</div>
+        <div class="ask-label">Annual AI Tools Budget — FY2026</div>
+        <ul class="ask-list">
+          <li>Perplexity Pro — real-time cited research, fact-checking, competitor monitoring ($200)</li>
+          <li>Gemini Pro — Google Workspace integration for operational tasks ($240)</li>
+          <li>Picryl Premium — full-resolution public domain imagery from Library of Congress, Smithsonian &amp; National Archives ($120)</li>
+          <li>Emerging tools testing — travel &amp; tourism AI evaluation and vendor trials (~$440)</li>
+        </ul>
+      </div>
+
+      <p class="closing-note">
+        The average company spends $6,000 per year on AI tools. Visit Loudoun's request is $1,000 — one-sixth of that benchmark. The concern about eventual standardization is valid and anticipated: this budget is specifically designed to fund the evaluation period that makes a confident platform decision possible. When the organization is ready to commit to a single tool, it will be because someone tested the alternatives first — and that testing happened here, at $1,000, not after a costly enterprise commitment to the wrong platform.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <p>Visit Loudoun &nbsp;·&nbsp; AJ Mirabal, Marketing Coordinator &nbsp;·&nbsp; visitloudoun.aj@gmail.com &nbsp;·&nbsp; May 2026</p>
+  </footer>
+
+</body>
+</html>
