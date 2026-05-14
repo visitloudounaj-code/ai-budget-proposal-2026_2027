@@ -4,12 +4,6 @@ An HTML presentation page making the case for a $1,000 annual AI tools and subsc
 
 ---
 
-## File
-
-`AI-Tools-Budget-Proposal.html`
-
----
-
 ## How to View
 
 The proposal is hosted via GitHub Pages: **(https://visitloudounaj-code.github.io/ai-budget-proposal-2026_2027/)**
