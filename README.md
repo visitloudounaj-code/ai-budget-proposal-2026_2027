@@ -12,15 +12,9 @@ An HTML presentation page making the case for a $1,000 annual AI tools and subsc
 
 ## How to View
 
-Clone the repo and open the file directly in a browser:
+The proposal is hosted via GitHub Pages: **[link to GitHub Pages site]**
 
-```bash
-git clone https://github.com/[your-username]/[repo-name].git
-cd [repo-name]
-open AI-Tools-Budget-Proposal.html
-```
-
-Or double-click the file in your file explorer. No local server, build process, or dependencies required.
+For best experience, view in a modern browser (Chrome, Firefox, Safari or Edge). The page is fully responsive and prints cleanly if a hard copy is needed.
 
 ---
 
